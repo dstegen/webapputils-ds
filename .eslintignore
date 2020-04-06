@@ -1,0 +1,5 @@
+# .eslintignore
+
+# exclude public
+public/*
+node_nodules/*

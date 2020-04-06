@@ -1,0 +1,17 @@
+# macOS files
+.DS_Store
+
+# archives
+*.zip
+*.tgz
+
+# external modules
+node_modules
+
+# other files & directories files
+media/*
+backup/*
+/*.csv
+/*.ods
+/*.bak
+sessionids.json
