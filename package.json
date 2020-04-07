@@ -35,5 +35,10 @@
     "popper.js": "^1.16.1",
     "uuid": "^7.0.3",
     "ws": "^7.2.3"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
   }
 }
