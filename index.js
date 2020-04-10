@@ -11,7 +11,7 @@ const http = require('http');
 const WebSocket = require('ws');
 
 const getIPs = require('./lib/getIPs');
-const controller = require('./lib/controller');
+const router = require('./lib/router');
 
 let port = 8080;
 let wsport = 8080;
@@ -28,7 +28,7 @@ console.log('Available network devices: ');
 console.log(getIPs());
 
 const server = http.createServer( function (request, response) {
-  controller(request, response, wss, wsport);
+  router(request, response, wss, wsport);
 }).listen(port, host, () => console.log('webapp-ds is online: http://'+host+':'+port+' (wsport:'+wsport+')'));
 
 const wss = new WebSocket.Server({
