@@ -7,6 +7,7 @@
 
 'use strict';
 
+// Required modules
 const http = require('http');
 const WebSocket = require('ws');
 
