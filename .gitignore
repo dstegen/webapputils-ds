@@ -14,6 +14,6 @@ backup/*
 /*.csv
 /*.ods
 /*.bak
-/*.json
 sessionids.json
 mydata.json
+mydata_bak.json
