@@ -1,9 +1,66 @@
 # webapputils-ds #
-#### Simple utils for nodejs web app ####
+#### simple utils for making nodejs web apps programming more easy ####
+
+## Installation ##
+
+```
+npm install webapputils-ds
+```
 
 ## Example ##
 
-Go into node_modules/webapputils-ds/example and start the example with node index.js.
+Start example with
+```
+node node_modules/webapputils-ds/example/index.js
+```
+
+**Example login credentials:**
+
+Name: Dani
+
+Password: 123
+
+## Usage ##
+
+```
+const { cookie, SendObj, uniSend, getFormObj, authenticate } = require('webapputils-ds');
+```
+
+- **cookie(request)** returns the cookie-object, access cookie-properties like this:
+```
+cookie(request).sessionid
+```
+- **SendObj()** returns a new sendObj, you can use properties for statusCode and cookies, or add data later
+```
+let sendObj = new SendObj(302);  //redirect to '/'
+let sendObj = new SendObj(302, [sessionid=1001]);  //redirect to '/' with sessionid in cookie
+let sendObj = new SendObj();
+sendObj.data = '<!DOCTYPE HTML><html lang="en"><body><h1>Hello World!</h1></body></html>'
+```
+
+- use **uniSend(sendObj, response)** for sending the response
+```
+uniSend(new SendObj(302, [sessionid=1001]), response);
+uniSend(sendObj, response);
+```
+
+- **getFormObj(request)** returns a promis and the form fields and files in data, use like this:
+```
+getFormObj(request).then(
+  data => {
+    uniSend(new SendObj(302, ['sessionid='+authenticate.login(passwd, data.fields.username, data.fields.password, sessionFilePath)]), response);
+  }
+).catch(
+  error => {
+    console.log('ERROR login: '+error.message);
+});
+```
+
+- **authenticate** provides methodes for authentication:
+  - ***authenticate.login(passwdObj, myName, myPassword, sessionFilePath)*** returns uuid-v4 if successful, otherwise *undefined*
+  - ***authenticate.logout(sessionId, sessionFilePath)*** returns nothing
+  - ***authenticate.loggedIn(sessionId, sessionFilePath)*** returns *true* if user is logged in, otherwise *false*
+  - ***authenticate.addPasswd(passwdObj, myName, myPassword)*** returns passwdObj with new user and password added
 
 ## License Code ##
 
