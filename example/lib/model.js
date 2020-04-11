@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 let obj = undefined;
-const objPath = path.join(path.resolve(), './data/mydata.json');
+const objPath = path.join(__dirname, '../data/mydata.json');
 
 function initObj () {
   try {
@@ -71,10 +71,10 @@ function deleteItem (obj, fields) {
 
 function saveObj (obj) {
   try {
-    if (!fs.existsSync(path.join(path.resolve(), 'backup'))) {
-      fs.mkdirSync(path.join(path.resolve(), 'backup'));
+    if (!fs.existsSync(path.join(__dirname, '../backup'))) {
+      fs.mkdirSync(path.join(__dirname, '../backup'));
     }
-    fs.copyFileSync(objPath, path.join(path.resolve(), 'backup', 'data-backup_'+new Date()));
+    fs.copyFileSync(objPath, path.join(__dirname, '../backup', 'data-backup_'+new Date()));
     fs.writeFileSync(objPath, JSON.stringify({ data: obj}));
   } catch (e) {
     console.log('ERROR backuping and saving file: '+e);
