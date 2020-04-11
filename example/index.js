@@ -27,8 +27,14 @@ if (getIPs()['en0']) {
 console.log('Available network devices: ');
 console.log(getIPs());
 
+let devmode = false;
+if (process.argv.includes('devmode=true')) {
+	console.log('Entering developer mode...');
+	devmode=true;
+}
+
 const server = http.createServer( function (request, response) {
-  router(request, response, wss, wsport);
+  router(request, response, wss, wsport, devmode);
 }).listen(port, host, () => console.log('webapputils-ds example is online: http://'+host+':'+port+' (wsport:'+wsport+')'));
 
 const wss = new WebSocket.Server({
