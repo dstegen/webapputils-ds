@@ -1,5 +1,5 @@
-# WebApp-DS #
-#### Simple web app framework written in nodejs ####
+# webapputils-ds #
+#### Simple utils for nodejs web app ####
 
 ## License Code ##
 

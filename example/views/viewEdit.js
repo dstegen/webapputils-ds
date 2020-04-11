@@ -5,7 +5,7 @@
  * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
  */
 
-const {SendObj} = require('../webapputils');
+const {SendObj} = require('../../../webapputils');
 
 function viewEdit (itemObj) {
   let sendObj = new SendObj();
@@ -17,7 +17,7 @@ function viewEdit (itemObj) {
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Bootstrap, jquery and CSS -->
       <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/public/styles.css">
+      <link rel="stylesheet" href="/node_modules/webapputils/example/public/styles.css">
       <title>webapp-ds</title>
     </head>
     <body>
@@ -37,7 +37,7 @@ function viewEdit (itemObj) {
       <script src="/node_modules/jquery/dist/jquery.min.js"></script>
       <script src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
       <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-      <script src="/public/scripts.js"></script>
+      <script src="/node_modules/webapputils/example/public/scripts.js"></script>
     </body>
   </html>
   `;

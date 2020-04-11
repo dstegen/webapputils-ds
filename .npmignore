@@ -1,0 +1,6 @@
+.git/*
+.DS_Store
+.eslintignore
+.eslintrc.json
+.gitignore
+.npmignore

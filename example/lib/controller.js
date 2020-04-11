@@ -9,17 +9,11 @@
 
 // Required modules
 const path = require('path');
-const {cookie, uniSend, getFormObj, authenticate, SendObj} = require('../webapputils');
-/*
-const cookie = require('./cookie');
-const uniSend = require('./uniSend');
-const getFormObj = require('./getFormObj');
-const authenticate = require('./authenticate');
-const SendObj = require('./SendObj');
-*/
-const viewLogin = require('./viewLogin');
-const viewEdit = require('./viewEdit');
-const view = require('./view');
+const {cookie, uniSend, getFormObj, authenticate, SendObj} = require('../../../webapputils');
+
+const viewLogin = require('../views/viewLogin');
+const viewEdit = require('../views/viewEdit');
+const view = require('../views/view');
 const { getObj, updateItem, deleteItem } = require('./model');
 let obj = getObj();
 

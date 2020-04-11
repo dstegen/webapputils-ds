@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 let obj = undefined;
-const objPath = path.join(path.resolve(), 'mydata.json');
+const objPath = path.join(path.resolve(), './data/mydata.json');
 
 function initObj () {
   try {

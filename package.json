@@ -1,11 +1,12 @@
 {
-  "name": "webapp-ds",
-  "version": "0.3.1",
-  "description": "web app framework",
+  "name": "webapputils-ds",
+  "version": "0.4.0",
+  "description": "utils for nodejs web apps",
   "main": "index.js",
   "directories": {
-    "lib": "lib",
-    "public": "public"
+    "dist": "dist",
+    "example": "example",
+    "tests": "tests"
   },
   "scripts": {
     "start": "node index.js",
@@ -13,19 +14,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dstegen/webapp-ds.git"
+    "url": "git+https://github.com/dstegen/webapputils-ds.git"
   },
   "keywords": [
     "webapp",
-    "framework",
+    "utils",
     "nodejs"
   ],
   "author": "Daniel Stegen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dstegen/webapp-ds/issues"
+    "url": "https://github.com/dstegen/webapputils-ds/issues"
   },
-  "homepage": "https://github.com/dstegen/webapp-ds#readme",
+  "homepage": "https://github.com/dstegen/webapputils-ds#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",

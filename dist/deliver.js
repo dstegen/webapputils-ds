@@ -15,10 +15,10 @@ const uniSend = require('./uniSend');
 let SendObj = require('./SendObj');
 
 
-function deliver (request, response) {
+function deliver (request, response, staticPath=path.resolve()) {
   let sendObj = new SendObj();
   sendObj.contentType = mimetype.lookup(request.url.substr(1));
-  sendObj = getMyFile(sendObj, path.join(path.resolve(), request.url));
+  sendObj = getMyFile(sendObj, path.join(staticPath, request.url));
   uniSend(sendObj, response);
 }
 

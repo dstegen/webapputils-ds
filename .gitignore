@@ -10,8 +10,7 @@ node_modules
 
 # other files & directories files
 media/*
-backup/*
-lib/backup/*
+/webapputils/example/backup/*
 /*.csv
 /*.ods
 /*.bak
