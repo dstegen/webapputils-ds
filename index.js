@@ -1,8 +1,8 @@
 /*!
  * index.js
- * webapp-ds (https://github.com/dstegen/webapp-ds)
+ * webapputils-ds (https://github.com/dstegen/webapputils-ds)
  * Copyright 2020 Daniel Stegen <info@danielstegen.de>
- * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
 const authenticate = require('./dist/authenticate');
