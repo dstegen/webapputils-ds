@@ -10,10 +10,9 @@ node_modules
 
 # other files & directories files
 media/*
-/webapputils/example/backup/*
+example/backup/*
 /*.csv
 /*.ods
 /*.bak
 sessionids.json
-mydata.json
-mydata_bak.json
+make_package.txt

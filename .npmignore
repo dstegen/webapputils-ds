@@ -1,4 +1,5 @@
 node_modules/*
+make_package.txt
 .git/*
 .DS_Store
 .eslintignore
