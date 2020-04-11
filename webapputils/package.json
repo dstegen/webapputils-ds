@@ -1,0 +1,27 @@
+{
+  "name": "webapputils",
+  "version": "0.3.1",
+  "description": "utils for nodejs web apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "webapputils"
+  },
+  "keywords": [
+    "wep",
+    "app",
+    "utils"
+  ],
+  "author": "Daniel Stegen",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "formidable": "^1.2.2",
+    "mimetype": "0.0.8",
+    "uuid": "^7.0.3",
+    "ws": "^7.2.3"
+  }
+}

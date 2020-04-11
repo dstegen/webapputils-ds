@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
  */
 
+'use strict';
+
 class SendObj {
   constructor (statusCode = 200, cookie = [], contentType = 'text/html; charset=UTF-8', location = '/') {
     this._statusCode = statusCode;

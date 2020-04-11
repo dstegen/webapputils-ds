@@ -10,8 +10,8 @@
 // Required modules
 const http = require('http');
 const WebSocket = require('ws');
-
-const getIPs = require('./lib/getIPs');
+const {getIPs} = require('./webapputils');
+//const getIPs = require('./lib/getIPs');
 const router = require('./lib/router');
 
 let port = 8080;

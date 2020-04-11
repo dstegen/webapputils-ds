@@ -16,10 +16,9 @@ let SendObj = require('./SendObj');
 
 
 function deliver (request, response) {
-  let procDir = path.join(__dirname, '../');
   let sendObj = new SendObj();
   sendObj.contentType = mimetype.lookup(request.url.substr(1));
-  sendObj = getMyFile(sendObj, path.join(procDir, request.url));
+  sendObj = getMyFile(sendObj, path.join(path.resolve(), request.url));
   uniSend(sendObj, response);
 }
 

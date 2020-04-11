@@ -11,6 +11,7 @@ node_modules
 # other files & directories files
 media/*
 backup/*
+lib/backup/*
 /*.csv
 /*.ods
 /*.bak
