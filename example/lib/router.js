@@ -12,15 +12,13 @@ const path = require('path');
 const {deliver} = require('../../../webapputils-ds');
 const {webView, login, logout, editAction, updateAction, deleteAction} = require('./controller');
 
-console.log('path: '+path.resolve());
-console.log('dir: '+__dirname);
 
 function router (request, response, wss, wsport) {
   let route = request.url.substr(1).split('?')[0];
   if (request.url.includes('media') || request.url.includes('node_modules') || request.url.includes('public') || request.url.includes('favicon')) route = 'static';
   switch (route) {
     case 'static':
-      deliver(request, response, path.join(path.resolve(), '../'));
+      deliver(request, response, path.join(path.resolve(), '../../'));
       break;
     case 'login':
       login(request, response, wss);

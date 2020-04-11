@@ -18,7 +18,7 @@ let SendObj = require('./SendObj');
 function deliver (request, response, staticPath=path.join(__dirname, '../')) {
   let sendObj = new SendObj();
   sendObj.contentType = mimetype.lookup(request.url.substr(1));
-  console.log('deliver path: ' + path.join(staticPath, request.url));
+  //console.log('deliver path: ' + path.join(staticPath, request.url));
   sendObj = getMyFile(sendObj, path.join(staticPath, request.url));
   uniSend(sendObj, response);
 }
