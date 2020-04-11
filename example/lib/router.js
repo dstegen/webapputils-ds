@@ -14,7 +14,7 @@ const {webView, login, logout, editAction, updateAction, deleteAction} = require
 
 
 function router (request, response, wss, wsport, devmode) {
-  let staticPath = path.join(__dirname, '../../../');
+  let staticPath = path.join(__dirname, '../../../../');
   if (devmode) staticPath = path.join(__dirname, '../../');
   let route = request.url.substr(1).split('?')[0];
   if (request.url.includes('media') || request.url.includes('node_modules') || request.url.includes('public') || request.url.includes('favicon')) route = 'static';
