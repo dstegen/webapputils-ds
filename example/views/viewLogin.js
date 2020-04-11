@@ -1,11 +1,11 @@
 /*!
- * viewLogin.js
- * webapp-ds (https://github.com/dstegen/webapp-ds)
+ * examples/views/viewLogin.js
+ * webapputils-ds (https://github.com/dstegen/webapputils-ds)
  * Copyright 2020 Daniel Stegen <info@danielstegen.de>
- * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
-const {SendObj} = require('../../../webapputils');
+const {SendObj} = require('../../../webapputils-ds');
 
 function viewLogin () {
   let sendObj = new SendObj();

@@ -1,15 +1,15 @@
 /*!
- * lib/controller.js
- * webapp-ds (https://github.com/dstegen/webapp-ds)
+ * example/lib/controller.js
+ * webapputils-ds (https://github.com/dstegen/webapputils-ds)
  * Copyright 2020 Daniel Stegen <info@danielstegen.de>
- * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
 'use strict';
 
 // Required modules
 const path = require('path');
-const {cookie, uniSend, getFormObj, authenticate, SendObj} = require('../../../webapputils');
+const {cookie, uniSend, getFormObj, authenticate, SendObj} = require('../../../webapputils-ds');
 
 const viewLogin = require('../views/viewLogin');
 const viewEdit = require('../views/viewEdit');

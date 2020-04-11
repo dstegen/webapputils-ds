@@ -1,12 +1,12 @@
 /*!
- * lib/view.js
- * webapp-ds (https://github.com/dstegen/webapp-ds)
+ * example/views/view.js
+ * webapputils-ds (https://github.com/dstegen/webapputils-ds)
  * Copyright 2020 Daniel Stegen <info@danielstegen.de>
- * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
 // Required modules
-const {SendObj} = require('../../../webapputils');
+const {SendObj} = require('../../../webapputils-ds');
 
 function view (wsport, obj, msg='') {
   let sendObj = new SendObj();

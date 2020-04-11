@@ -1,8 +1,8 @@
 /*!
- * index.js
- * webapp-ds (https://github.com/dstegen/webapp-ds)
+ * example/index.js
+ * webapputils-ds (https://github.com/dstegen/webapputils-ds)
  * Copyright 2020 Daniel Stegen <info@danielstegen.de>
- * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
 'use strict';
@@ -10,7 +10,7 @@
 // Required modules
 const http = require('http');
 const WebSocket = require('ws');
-const {getIPs} = require('../../webapputils');
+const {getIPs} = require('../../webapputils-ds');
 const router = require('./lib/router');
 
 let port = 8080;
