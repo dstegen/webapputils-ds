@@ -29,7 +29,7 @@ console.log(getIPs());
 
 const server = http.createServer( function (request, response) {
   router(request, response, wss, wsport);
-}).listen(port, host, () => console.log('webapp-ds is online: http://'+host+':'+port+' (wsport:'+wsport+')'));
+}).listen(port, host, () => console.log('webapputils-ds example is online: http://'+host+':'+port+' (wsport:'+wsport+')'));
 
 const wss = new WebSocket.Server({
 	server,

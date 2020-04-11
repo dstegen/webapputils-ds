@@ -20,7 +20,7 @@ function router (request, response, wss, wsport) {
   if (request.url.includes('media') || request.url.includes('node_modules') || request.url.includes('public') || request.url.includes('favicon')) route = 'static';
   switch (route) {
     case 'static':
-      deliver(request, response, path.join(__dirname, '../../'));
+      deliver(request, response, path.join(path.resolve(), '../'));
       break;
     case 'login':
       login(request, response, wss);
