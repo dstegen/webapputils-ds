@@ -11,9 +11,9 @@ const fs = require('fs');
 const uuidv4 = require('uuid').v4;
 const bcrypt = require('bcryptjs');
 
-function login (passwd, myName, myPassword, sessionFilePath) {
+function login (passwdObj, myName, myPassword, sessionFilePath) {
   let sessionId = uuidv4();
-  if (checkPasswd(passwd, myName, myPassword)) {
+  if (checkPasswd(passwdObj, myName, myPassword)) {
     let sessionObj = {};
     if (fs.existsSync(sessionFilePath)) {
       sessionObj = getSessionObj(sessionFilePath);
@@ -36,7 +36,7 @@ function logout (sessionId, sessionFilePath) {
     sessionObj.ids.splice(sessionObj.ids.indexOf(sessionId));
     if (sessionObj.ids.length < 1) {
       try {
-        fs.unlinkSync(sessionFilePath);
+        //fs.unlinkSync(sessionFilePath);
       } catch (e) {
         console.log('ERROR deleting SessionObj: '+e);
       }
@@ -55,9 +55,9 @@ function loggedIn (sessionId, sessionFilePath) {
   }
 }
 
-function addPasswd (passwd, myName, myPassword) {
-  passwd[myName.toLowerCase()] = bcrypt.hashSync(myPassword);
-  return passwd;
+function addPasswd (passwdObj, myName, myPassword) {
+  passwdObj[myName.toLowerCase()] = bcrypt.hashSync(myPassword);
+  return passwdObj;
 }
 
 
@@ -83,9 +83,9 @@ function updateSessionObj (sessionObj, sessionFilePath) {
   }
 }
 
-function checkPasswd (passwd, myName, myPassword) {
-  if (passwd[myName.toLowerCase()]) {
-    if (bcrypt.compareSync(myPassword, passwd[myName.toLowerCase()])) {
+function checkPasswd (passwdObj, myName, myPassword) {
+  if (passwdObj[myName.toLowerCase()]) {
+    if (bcrypt.compareSync(myPassword, passwdObj[myName.toLowerCase()])) {
       return true;
     } else {
       return false;
