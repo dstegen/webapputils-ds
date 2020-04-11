@@ -1,8 +1,11 @@
 node_modules/*
-make_package.txt
+example/backup/*
+example/sessioids.json
 .git/*
 .DS_Store
 .eslintignore
 .eslintrc.json
 .gitignore
 .npmignore
+make_package.txt
+sessioids.json
