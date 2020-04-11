@@ -20,7 +20,7 @@ function view (wsport, obj, msg='') {
           <!-- Bootstrap, jquery and CSS -->
           <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
           <link rel="stylesheet" href="/node_modules/webapputils/example/public/styles.css">
-          <title>webapp-ds</title>
+          <title>webapputils-ds</title>
         </head>
         <body>
           <main class="container p-5 h-100">

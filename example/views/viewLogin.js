@@ -18,7 +18,7 @@ function viewLogin () {
        <!-- Bootstrap, jquery and CSS -->
        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
        <link rel="stylesheet" href="/node_modules/webapputils/example/public/styles.css">
-       <title>familyChat</title>
+       <title>webapputils-ds</title>
      </head>
      <body>
        <div class="container p-5">
