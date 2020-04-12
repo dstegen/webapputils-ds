@@ -14,5 +14,6 @@ example/backup/*
 /*.csv
 /*.ods
 /*.bak
+/*_bak.json
 sessionids.json
 make_package.txt
