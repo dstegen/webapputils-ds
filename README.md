@@ -57,7 +57,7 @@ getFormObj(request).then(
 ```
 
 - **authenticate** provides methodes for authentication:
-  - ***authenticate.login(passwdObj, myName, myPassword, sessionFilePath)*** returns uuid-v4 if successful, otherwise *undefined*
+  - ***authenticate.login(passwdObj, myName, myPassword, sessionFilePath)*** returns an uuid-v4 sessionid, if successful, otherwise *undefined*
   - ***authenticate.logout(sessionId, sessionFilePath)*** returns nothing
   - ***authenticate.loggedIn(sessionId, sessionFilePath)*** returns *true* if user is logged in, otherwise *false*
   - ***authenticate.addPasswd(passwdObj, myName, myPassword)*** returns passwdObj with new user and password added

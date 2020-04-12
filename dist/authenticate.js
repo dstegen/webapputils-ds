@@ -34,14 +34,13 @@ function logout (sessionId, sessionFilePath) {
   let sessionObj = getSessionObj(sessionFilePath);
   if (sessionObj.ids.includes(sessionId)) {
     sessionObj.ids.splice(sessionObj.ids.indexOf(sessionId));
+    updateSessionObj(sessionObj, sessionFilePath);
     if (sessionObj.ids.length < 1) {
       try {
-        //fs.unlinkSync(sessionFilePath);
+        fs.unlinkSync(sessionFilePath);
       } catch (e) {
         console.log('ERROR deleting SessionObj: '+e);
       }
-    } else {
-      updateSessionObj(sessionObj, sessionFilePath);
     }
   }
 }
