@@ -44,7 +44,7 @@ uniSend(new SendObj(302, [sessionid=1001]), response);
 uniSend(sendObj, response);
 ```
 
-- **getFormObj(request)** returns a promis and the form fields and files in data, use like this:
+- **getFormObj(request)** returns a promise and the form fields and files in data, use like this:
 ```
 getFormObj(request).then(
   data => {
@@ -56,7 +56,7 @@ getFormObj(request).then(
 });
 ```
 
-- **authenticate** provides methodes for authentication:
+- **authenticate** provides methods for authentication:
   - ***authenticate.login(passwdObj, myName, myPassword, sessionFilePath)*** returns an uuid-v4 sessionid, if successful, otherwise *undefined*
   - ***authenticate.logout(sessionId, sessionFilePath)*** returns nothing
   - ***authenticate.loggedIn(sessionId, sessionFilePath)*** returns *true* if user is logged in, otherwise *false*
