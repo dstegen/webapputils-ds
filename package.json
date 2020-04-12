@@ -1,6 +1,6 @@
 {
   "name": "webapputils-ds",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "utils for nodejs web apps",
   "main": "index.js",
   "directories": {
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/index.js"
   },
   "repository": {
     "type": "git",
