@@ -66,7 +66,7 @@ function getSessionObj (sessionFilePath) {
   let sessionObj = {};
   try {
     if (fs.existsSync(sessionFilePath)) {
-      sessionObj = require(sessionFilePath);
+      sessionObj = JSON.parse(fs.readFileSync(sessionFilePath, 'utf8'));
     }
   } catch (e) {
     console.log('ERROR reading SessionObj: '+e);
