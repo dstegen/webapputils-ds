@@ -1,5 +1,5 @@
 # webapputils-ds #
-#### simple utils for making nodejs web apps programming more easy ####
+#### npm package with simple utils for making nodejs web apps programming more easy ####
 
 ## Installation ##
 
