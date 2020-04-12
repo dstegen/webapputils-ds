@@ -13,9 +13,9 @@ const os = require('os');
 function getIPs () {
   let interfaces = os.networkInterfaces();
   let addresses = {};
-  for (var k in interfaces) {
-    for (var m in interfaces[k]) {
-      var address = interfaces[k][m];
+  for (let k in interfaces) {
+    for (let m in interfaces[k]) {
+      let address = interfaces[k][m];
       if (address.family === 'IPv4') {
         addresses[k] = address.address;
       }
