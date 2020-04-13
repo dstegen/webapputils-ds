@@ -28,7 +28,7 @@ function login (passwdObj, myUserId, myPassword, sessionFilePath) {
 function logout (sessionId, sessionFilePath) {
   let sessionsList = getSessionsList(sessionFilePath);
   if (sessionsList && sessionsList.some( item => item[sessionId])) {
-    sessionsList.splice(sessionsList.indexOf(sessionsList.filter( item => item[sessionId])[0]));
+    sessionsList.splice(sessionsList.indexOf(sessionsList.filter( item => item[sessionId])[0]),1);
     updateSessionObj(sessionsList, sessionFilePath);
     if (sessionsList.length < 1) {
       try {
