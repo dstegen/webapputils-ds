@@ -11,19 +11,14 @@ const fs = require('fs');
 const uuidv4 = require('uuid').v4;
 const bcrypt = require('bcryptjs');
 
-function login (passwdObj, myName, myPassword, sessionFilePath) {
+function login (passwdObj, myUserId, myPassword, sessionFilePath) {
   let sessionId = uuidv4();
-  if (checkPasswd(passwdObj, myName, myPassword)) {
-    let sessionObj = {};
-    if (fs.existsSync(sessionFilePath)) {
-      sessionObj = getSessionObj(sessionFilePath);
-      sessionObj.ids.push(sessionId);
-      updateSessionObj(sessionObj, sessionFilePath);
-    } else {
-      sessionObj = { ids: []};
-      sessionObj.ids.push(sessionId);
-      updateSessionObj(sessionObj, sessionFilePath);
-    }
+  if (checkPasswd(passwdObj, myUserId, myPassword)) {
+    let tmpObj = {};
+    tmpObj[sessionId] = myUserId;
+    let sessionsList = getSessionsList(sessionFilePath);
+    sessionsList.push(tmpObj);
+    updateSessionObj(sessionsList, sessionFilePath);
     return sessionId;
   } else {
     return undefined;
@@ -31,11 +26,11 @@ function login (passwdObj, myName, myPassword, sessionFilePath) {
 }
 
 function logout (sessionId, sessionFilePath) {
-  let sessionObj = getSessionObj(sessionFilePath);
-  if (sessionObj.ids.includes(sessionId)) {
-    sessionObj.ids.splice(sessionObj.ids.indexOf(sessionId));
-    updateSessionObj(sessionObj, sessionFilePath);
-    if (sessionObj.ids.length < 1) {
+  let sessionsList = getSessionsList(sessionFilePath);
+  if (sessionsList && sessionsList.some( item => item[sessionId])) {
+    sessionsList.splice(sessionsList.indexOf(sessionsList.filter( item => item[sessionId])[0]));
+    updateSessionObj(sessionsList, sessionFilePath);
+    if (sessionsList.length < 1) {
       try {
         fs.unlinkSync(sessionFilePath);
       } catch (e) {
@@ -46,45 +41,49 @@ function logout (sessionId, sessionFilePath) {
 }
 
 function loggedIn (sessionId, sessionFilePath) {
-  let sessionObj = getSessionObj(sessionFilePath);
-  if (sessionObj.ids && sessionObj.ids.includes(sessionId)) {
+  let sessionsList = getSessionsList(sessionFilePath);
+  if (sessionsList && sessionsList.some( item => item[sessionId])) {
     return true;
   } else {
     return false;
   }
 }
 
-function addPasswd (passwdObj, myName, myPassword) {
-  passwdObj[myName.toLowerCase()] = bcrypt.hashSync(myPassword);
+function addPasswd (passwdObj, myUserId, myPassword) {
+  passwdObj[myUserId] = bcrypt.hashSync(myPassword);
   return passwdObj;
 }
 
+function getUserId (sessionId, sessionFilePath) {
+  let sessionsList = getSessionsList(sessionFilePath);
+  return sessionsList.filter( item => item[sessionId])[0][sessionId];
+}
 
 // Additional functions
 
-function getSessionObj (sessionFilePath) {
-  let sessionObj = {};
+function getSessionsList (sessionFilePath) {
+  let sessionObj = { ids: [] };
   try {
     if (fs.existsSync(sessionFilePath)) {
-      sessionObj = JSON.parse(fs.readFileSync(sessionFilePath, 'utf8'));
+      sessionObj =  JSON.parse(fs.readFileSync(sessionFilePath, 'utf8'));
     }
   } catch (e) {
     console.log('ERROR reading SessionObj: '+e);
   }
-  return sessionObj;
+  return sessionObj.ids;
 }
 
-function updateSessionObj (sessionObj, sessionFilePath) {
+function updateSessionObj (sessionsList, sessionFilePath) {
   try {
-    fs.writeFileSync(sessionFilePath, JSON.stringify(sessionObj));
+    fs.writeFileSync(sessionFilePath, JSON.stringify({ ids: sessionsList }));
   } catch (e) {
     console.log('ERROR updating SessionObj: '+e);
   }
 }
 
-function checkPasswd (passwdObj, myName, myPassword) {
-  if (passwdObj[myName.toLowerCase()]) {
-    if (bcrypt.compareSync(myPassword, passwdObj[myName.toLowerCase()])) {
+function checkPasswd (passwdObj, myUserId, myPassword) {
+  if (passwdObj[myUserId]) {
+    if (bcrypt.compareSync(myPassword, passwdObj[myUserId])) {
       return true;
     } else {
       return false;
@@ -95,4 +94,4 @@ function checkPasswd (passwdObj, myName, myPassword) {
 }
 
 
-module.exports = {login, logout, loggedIn, addPasswd};
+module.exports = {login, logout, loggedIn, addPasswd, getUserId};

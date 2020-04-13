@@ -17,7 +17,7 @@ const view = require('../views/view');
 const { getObj, updateItem, deleteItem } = require('./model');
 let obj = getObj();
 
-let passwd = { 'dani': '$2a$10$Lcj1Cq9ldWV4bKrnxzVHqe1uDQwvleEQi1V5pHBcWJqRQDulOFtFa' };
+let passwd = { 'Dani': '$2a$10$Lcj1Cq9ldWV4bKrnxzVHqe1uDQwvleEQi1V5pHBcWJqRQDulOFtFa' };
 let sessionFilePath = path.join(__dirname, '../sessionids.json');
 
 
