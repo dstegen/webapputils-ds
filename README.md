@@ -7,7 +7,7 @@
 npm install webapputils-ds
 ```
 
-## Example ##
+## Use example ##
 
 Start example with
 ```
@@ -57,10 +57,22 @@ getFormObj(request).then(
 ```
 
 - **authenticate** provides methods for authentication:
-  - ***authenticate.login(passwdObj, myName, myPassword, sessionFilePath)*** returns an uuid-v4 sessionid, if successful, otherwise *undefined*
+  - **passwdObj-format**: { 'userId': 'bcrypt(password)'}
+  - ***authenticate.login(passwdObj, myUserId, myPassword, sessionFilePath)*** returns an uuid-v4 sessionid, if successful, otherwise *undefined*
   - ***authenticate.logout(sessionId, sessionFilePath)*** returns nothing
   - ***authenticate.loggedIn(sessionId, sessionFilePath)*** returns *true* if user is logged in, otherwise *false*
-  - ***authenticate.addPasswd(passwdObj, myName, myPassword)*** returns passwdObj with new user and password added
+  - ***authenticate.addPasswd(passwdObj, myUserId, myPassword)*** returns passwdObj with new user and password added
+  - ***authenticate.getUserId(sessionId, sessionFilePath)*** returns userId for logged in user with sessionId
+
+## Changelog ##
+
+#### v0.4.3 ####
+- improved authenticate module
+- added authenticate.getUserId
+
+#### v0.4.2 ####
+- bug fix in authenticate module
+- some code cleanup
 
 ## License Code ##
 
