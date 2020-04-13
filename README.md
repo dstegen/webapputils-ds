@@ -66,6 +66,9 @@ getFormObj(request).then(
 
 ## Changelog ##
 
+#### v0.4.4 ####
+- important bug fix in authenticate
+
 #### v0.4.3 ####
 - improved authenticate module
 - added authenticate.getUserId
