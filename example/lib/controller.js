@@ -23,7 +23,7 @@ let sessionFilePath = path.join(__dirname, '../sessionids.json');
 
 function webView (request, response, wss, wsport) {
   if (authenticate.loggedIn(cookie(request).sessionid, sessionFilePath)) {
-    uniSend(view(wsport, obj), response);
+    uniSend(view(wsport, obj, 'Logged in as: '+authenticate.getUserId(cookie(request).sessionid, sessionFilePath)), response);
   } else {
     uniSend(viewLogin(), response);
   }

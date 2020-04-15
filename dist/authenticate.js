@@ -50,14 +50,23 @@ function loggedIn (sessionId, sessionFilePath) {
 }
 
 function addPasswd (passwdObj, myUserId, myPassword) {
-  passwdObj[myUserId] = bcrypt.hashSync(myPassword);
+  try {
+    passwdObj[myUserId] = bcrypt.hashSync(myPassword);
+  } catch (e) {
+    console.log('ERROR adding user and password: '+e);
+  }
   return passwdObj;
 }
 
 function getUserId (sessionId, sessionFilePath) {
-  let sessionsList = getSessionsList(sessionFilePath);
-  return sessionsList.filter( item => item[sessionId])[0][sessionId];
+  try {
+    return getSessionsList(sessionFilePath).filter( item => item[sessionId])[0][sessionId];
+  } catch (e) {
+    console.log('ERROR getting userId: '+e);
+    return 'ERROR getting userId...';
+  }
 }
+
 
 // Additional functions
 

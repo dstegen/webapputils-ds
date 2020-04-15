@@ -25,7 +25,7 @@ function view (wsport, obj, msg='') {
         <body>
           <main class="container p-5 h-100">
             <h1>Hello World!</h1>
-            <h3>${msg}</h3>
+            <p>${msg}</p>
             <div class="table-responsive">
               <table border="1">
                 <tr>
