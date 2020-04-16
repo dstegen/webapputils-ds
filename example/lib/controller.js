@@ -9,7 +9,8 @@
 
 // Required modules
 const path = require('path');
-const {cookie, uniSend, getFormObj, authenticate, SendObj} = require('../../../webapputils-ds');
+const {cookie, uniSend, getFormObj, SendObj, Auth} = require('../../../webapputils-ds');
+const authenticate = new Auth(path.join(__dirname, '../sessionids.json'));
 
 const viewLogin = require('../views/viewLogin');
 const viewEdit = require('../views/viewEdit');
@@ -18,12 +19,11 @@ const { getObj, updateItem, deleteItem } = require('./model');
 let obj = getObj();
 
 let passwd = { 'Dani': '$2a$10$Lcj1Cq9ldWV4bKrnxzVHqe1uDQwvleEQi1V5pHBcWJqRQDulOFtFa' };
-let sessionFilePath = path.join(__dirname, '../sessionids.json');
 
 
 function webView (request, response, wss, wsport) {
-  if (authenticate.loggedIn(cookie(request).sessionid, sessionFilePath)) {
-    uniSend(view(wsport, obj, 'Logged in as: '+authenticate.getUserId(cookie(request).sessionid, sessionFilePath)), response);
+  if (authenticate.loggedIn(cookie(request).sessionid)) {
+    uniSend(view(wsport, obj, 'Logged in as: '+authenticate.getUserId(cookie(request).sessionid)), response);
   } else {
     uniSend(viewLogin(), response);
   }
@@ -32,7 +32,7 @@ function webView (request, response, wss, wsport) {
 function login (request, response, wss) {
   getFormObj(request).then(
     data => {
-      uniSend(new SendObj(302, ['sessionid='+authenticate.login(passwd, data.fields.username, data.fields.password, sessionFilePath)]), response);
+      uniSend(new SendObj(302, ['sessionid='+authenticate.login(passwd, data.fields.username, data.fields.password)]), response);
     }
   ).catch(
     error => {
@@ -41,12 +41,12 @@ function login (request, response, wss) {
 }
 
 function logout (request, response, wss) {
-  authenticate.logout(cookie(request).sessionid, sessionFilePath)
+  authenticate.logout(cookie(request).sessionid)
   uniSend(new SendObj(302, ['sessionid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;']), response);
 }
 
 function editAction (request, response, wss) {
-  if (authenticate.loggedIn(cookie(request).sessionid, sessionFilePath)) {
+  if (authenticate.loggedIn(cookie(request).sessionid)) {
     getFormObj(request).then(
       data => {
         let itemObj = {};
@@ -66,7 +66,7 @@ function editAction (request, response, wss) {
 }
 
 function updateAction (request, response, wss) {
-  if (authenticate.loggedIn(cookie(request).sessionid, sessionFilePath)) {
+  if (authenticate.loggedIn(cookie(request).sessionid)) {
     getFormObj(request).then(
       data => {
         obj = updateItem(obj, data.fields);
@@ -82,7 +82,7 @@ function updateAction (request, response, wss) {
 }
 
 function deleteAction (request, response, wss) {
-  if (authenticate.loggedIn(cookie(request).sessionid, sessionFilePath)) {
+  if (authenticate.loggedIn(cookie(request).sessionid)) {
     getFormObj(request).then(
       data => {
         obj = deleteItem(obj, data.fields);
