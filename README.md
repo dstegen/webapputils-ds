@@ -23,14 +23,14 @@ Password: 123
 ## Usage ##
 
 ```
-const { cookie, SendObj, uniSend, getFormObj, authenticate } = require('webapputils-ds');
+const { cookie, SendObj, uniSend, getFormObj, authenticate, Auth } = require('webapputils-ds');
 ```
 
 - **cookie(request)** returns the cookie-object, access cookie-properties like this:
 ```
 cookie(request).sessionid
 ```
-- **SendObj()** returns a new sendObj, you can use properties for statusCode and cookies, or add data later
+- **SendObj()** returns a new sendObj, you can use properties for statusCode and cookies and add the data later
 ```
 let sendObj = new SendObj(302);  //redirect to '/'
 let sendObj = new SendObj(302, [sessionid=1001]);  //redirect to '/' with sessionid in cookie
@@ -44,7 +44,7 @@ uniSend(new SendObj(302, [sessionid=1001]), response);
 uniSend(sendObj, response);
 ```
 
-- **getFormObj(request)** returns a promise and the form fields and files in data, use like this:
+- **getFormObj(request)** returns a promise and the form fields and files in data object, use like this:
 ```
 getFormObj(request).then(
   data => {
@@ -56,7 +56,7 @@ getFormObj(request).then(
 });
 ```
 
-- **authenticate** provides methods for authentication:
+- **authenticate** ***(deprecated)*** provides methods for authentication:
   - **passwdObj-format**: { 'userId': 'bcrypt(password)'}
   - ***authenticate.login(passwdObj, myUserId, myPassword, sessionFilePath)*** returns an uuid-v4 sessionid, if successful, otherwise *undefined*
   - ***authenticate.logout(sessionId, sessionFilePath)*** returns nothing
@@ -64,7 +64,28 @@ getFormObj(request).then(
   - ***authenticate.addPasswd(passwdObj, myUserId, myPassword)*** returns passwdObj with new user and password added
   - ***authenticate.getUserId(sessionId, sessionFilePath)*** returns userId for logged in user with sessionId
 
+
+- **Auth()** is the new class module for authentication, and will replace *authenticate*
+```
+const authenticate = new Auth(sessionFilePath);
+```
+```
+authenticate.login(passwdObj, myUserId, myPassword); //returns an uuid-v4 sessionid if successful, otherwise undefined
+authenticate.loggedIn(sessionId); //returns true if user is logged in, otherwise false
+authenticate.getUserId(sessionId); //returns the userId, given in the login
+authenticate.addPasswd(passwdObj, myUserId, myPassword); //returns passwdObj with new user and password added
+authenticate.logout(sessionId); //returns nothing
+```
+
+
 ## Changelog ##
+
+#### v0.4.5 ###
+- added new class module Auth.js for authentication
+- added unit test for Auth.js module
+- updated example with new Auth.js module
+- old authenticate.js is marked as deprecated
+- removed popper.js from dependencies
 
 #### v0.4.4 ####
 - important bug fix in authenticate

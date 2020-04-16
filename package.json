@@ -1,6 +1,6 @@
 {
   "name": "webapputils-ds",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "npm package with simple utils for making nodejs web apps programming more easy",
   "main": "index.js",
   "directories": {
@@ -33,7 +33,6 @@
     "formidable": "^1.2.2",
     "jquery": "^3.4.1",
     "mimetype": "0.0.8",
-    "popper.js": "^1.16.1",
     "uuid": "^7.0.3",
     "ws": "^7.2.3"
   },
