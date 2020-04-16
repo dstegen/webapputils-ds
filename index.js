@@ -12,5 +12,6 @@ const getFormObj = require('./dist/getFormObj');
 const getIPs = require('./dist/getIPs');
 const SendObj = require('./dist/SendObj');
 const uniSend = require('./dist/uniSend');
+const Auth = require('./dist/Auth');
 
-module.exports = { authenticate, cookie, deliver, getFormObj, getIPs, SendObj, uniSend }
+module.exports = { authenticate, cookie, deliver, getFormObj, getIPs, SendObj, uniSend, Auth }

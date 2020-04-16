@@ -9,8 +9,6 @@
 
 // Required Modules
 const assert = require('assert');
-
-// Required Fred Modules
 const getIPs = require('../dist/getIPs');
 
 const myInterface = Object.keys(require('os').networkInterfaces())[0];
