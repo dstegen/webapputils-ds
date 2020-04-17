@@ -77,6 +77,19 @@ authenticate.addPasswd(passwdObj, myUserId, myPassword); //returns passwdObj wit
 authenticate.logout(sessionId); //returns nothing
 ```
 
+- **server(callback, serverName, port, optPar, serverOptions)** is a new module for easy starting a webserver incl. web sockets
+  - ***callback*** [type: Function]: The callback function, usually it's the router function. The following parameters are passed to the callback function:
+    - request, response, wss, wsport, optPar
+  - ***serverName*** [type: String]: Server name for the console log, default 'Server'
+  - ***port*** [type: Integer]: Server port, default is 8080
+  - ***optPar*** [type: variable]: optional parameter for the callback function can be passed through
+  - ***serverOptions*** [type: Object]: for adding server options directly passed to the http-server, example for switching to https:
+  ```
+  serverOptions = {
+    key = 'SSL-key',
+    caert = 'SSL-cert'
+  }
+  ```
 
 ## Changelog ##
 
