@@ -23,7 +23,7 @@ Password: 123
 ## Usage ##
 
 ```
-const { cookie, SendObj, uniSend, getFormObj, authenticate, Auth } = require('webapputils-ds');
+const { cookie, SendObj, uniSend, getFormObj, authenticate, Auth, ServerDS, ServerDSS } = require('webapputils-ds');
 ```
 
 - **cookie(request)** returns the cookie-object, access cookie-properties like this:
@@ -65,10 +65,11 @@ getFormObj(request).then(
   - ***authenticate.getUserId(sessionId, sessionFilePath)*** returns userId for logged in user with sessionId
 
 
-- **Auth()** is the new class module for authentication, and will replace *authenticate*
+- **Auth()** is the new class module for authentication, and will replace *authenticate* soon
 ```
 const authenticate = new Auth(sessionFilePath);
 ```
+  - **passwdObj-format**: { 'userId': 'bcrypt(password)'}
 ```
 authenticate.login(passwdObj, myUserId, myPassword); //returns an uuid-v4 sessionid if successful, otherwise undefined
 authenticate.loggedIn(sessionId); //returns true if user is logged in, otherwise false
@@ -77,21 +78,39 @@ authenticate.addPasswd(passwdObj, myUserId, myPassword); //returns passwdObj wit
 authenticate.logout(sessionId); //returns nothing
 ```
 
-- **server(callback, serverName, port, optPar, serverOptions)** is a new module for easy starting a webserver incl. web sockets
-  - ***callback*** [type: Function]: The callback function, usually it's the router function. The following parameters are passed to the callback function:
-    - request, response, wss, wsport, optPar
-  - ***serverName*** [type: String]: Server name for the console log, default 'Server'
-  - ***port*** [type: Integer]: Server port, default is 8080
-  - ***optPar*** [type: variable]: optional parameter for the callback function can be passed through
-  - ***serverOptions*** [type: Object]: for adding server options directly passed to the http-server, example for switching to https:
+- **ServerDS** and **ServerDSS** are the new class modules for easy starting a web server (incl. web sockets on the same port), ServerDSS is the TSL/SSL version
+
+  - **simple example:**
   ```
-  serverOptions = {
-    key = 'SSL-key',
-    caert = 'SSL-cert'
-  }
+  const server = new ServerDS('webapputils-ds example');
+  server.setCallback(router);
+  server.startServer();
   ```
+  - ***new ServerDS(serverName, port, host, serverOptions)***
+    - for **ServerDS** are all parameters *optional*, **ServerDSS** *needs all parameters* because of the serverOptions for the SSL key and cert
+    - ***serverName*** [type: String]: Server name for the console log, default is 'Server'
+    - ***port*** [type: Integer]: Server port, default is 8080
+    - ***host*** [type: String]: Server ip-address, default is '0', which means all available network devices, incl. localhost
+    - ***serverOptions*** [type: Object]: for adding server options, which are directly passed to the http/s-server, example for https:
+    ```
+    serverOptions = {
+      key = 'SSL-key',
+      cert = 'SSL-cert'
+    }
+    ```
+  - ***setCallback(callback, optionalParameter)*** method to give the server the callback function
+    - ***callback*** [type: Function]: The callback function, usually it's the router function. The following parameters are passed to the callback function:
+      - request, response, wss, wsport, optionalParameter
+    - ***optionalParameter*** [type: variable]: optional parameter for the callback function which will be passed through to the callback function
+  - ***startServer()*** will finally start the web server
+
 
 ## Changelog ##
+
+#### v0.4.6 ####
+- added new class modules (ServerDS, ServerDSS) for easy starting a web server (incl. web sockets on the same port)
+- updated example to use new ServerDS module
+- cleaned up example
 
 #### v0.4.5 ###
 - added new class module Auth.js for authentication
