@@ -49,7 +49,7 @@ function viewEdit (itemObj) {
 function formInputs (itemObj) {
   let returnHtml = ''
   if (Object.keys(itemObj).length > 0) {
-    Object.keys(itemObj).forEach((key, i) => {
+    Object.keys(itemObj).forEach( key => {
       if (key !== 'id') {
         returnHtml += `<input type="text" class="mr-3" name="${key}" value="${itemObj[key]}" placeholder="${key}" />`;
       }

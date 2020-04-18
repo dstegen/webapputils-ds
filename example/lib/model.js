@@ -38,7 +38,7 @@ function getObj () {
 function updateItem (obj, fields) {
   if (fields.id != '') {
     // update
-    Object.keys(fields).forEach((key, i) => {
+    Object.keys(fields).forEach( key => {
       if (key !== 'id') {
         obj.filter(item => item.id == fields.id)[0][key] = fields[key];
       }
@@ -49,7 +49,7 @@ function updateItem (obj, fields) {
     // add
     let newItem = {};
     newItem.id = getNewId(obj);
-    Object.keys(fields).forEach((key, i) => {
+    Object.keys(fields).forEach( key => {
       if (key !== 'id') {
         newItem[key] = fields[key];
       }

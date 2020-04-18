@@ -29,7 +29,7 @@ function webView (request, response, wss, wsport) {
   }
 }
 
-function login (request, response, wss) {
+function login (request, response) {
   getFormObj(request).then(
     data => {
       uniSend(new SendObj(302, ['sessionid='+authenticate.login(passwd, data.fields.username, data.fields.password)]), response);
@@ -40,17 +40,17 @@ function login (request, response, wss) {
   });
 }
 
-function logout (request, response, wss) {
+function logout (request, response) {
   authenticate.logout(cookie(request).sessionid)
   uniSend(new SendObj(302, ['sessionid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;']), response);
 }
 
-function editAction (request, response, wss) {
+function editAction (request, response) {
   if (authenticate.loggedIn(cookie(request).sessionid)) {
     getFormObj(request).then(
       data => {
         let itemObj = {};
-        Object.keys(obj[0]).forEach((key, i) => {
+        Object.keys(obj[0]).forEach( key => {
           itemObj[key] = '';
         });
         if (data.fields.id) itemObj = obj.filter( item => item.id == Number(data.fields.id))[0];
@@ -65,7 +65,7 @@ function editAction (request, response, wss) {
   }
 }
 
-function updateAction (request, response, wss) {
+function updateAction (request, response) {
   if (authenticate.loggedIn(cookie(request).sessionid)) {
     getFormObj(request).then(
       data => {
@@ -81,7 +81,7 @@ function updateAction (request, response, wss) {
   }
 }
 
-function deleteAction (request, response, wss) {
+function deleteAction (request, response) {
   if (authenticate.loggedIn(cookie(request).sessionid)) {
     getFormObj(request).then(
       data => {

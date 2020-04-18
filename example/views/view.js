@@ -70,7 +70,7 @@ function view (wsport, obj, msg='') {
 
 function tableRow (item) {
   let returnHtml = '';
-  Object.keys(item).forEach((key, i) => {
+  Object.keys(item).forEach( key => {
     returnHtml += `<td class="px-3 py-1">${item[key]}</td>`;
   });
   returnHtml += `
