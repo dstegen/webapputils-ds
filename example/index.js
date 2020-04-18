@@ -8,8 +8,11 @@
 'use strict';
 
 // Required modules
-const {server} = require('../../webapputils-ds');
+const { ServerDS, ServerDSS } = require('../../webapputils-ds');
 const router = require('./lib/router');
+
+// Name the process
+process.title = 'webapputils-ds example';
 
 let devmode = false;
 if (process.argv.includes('devmode=true')) {
@@ -17,4 +20,6 @@ if (process.argv.includes('devmode=true')) {
 	devmode=true;
 }
 
-server(router, 'webapputils-ds example', 8080, devmode)
+const server = new ServerDS('webapputils-ds example');
+server.setCallback(router, devmode);
+server.startServer();
