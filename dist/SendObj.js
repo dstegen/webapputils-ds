@@ -8,12 +8,12 @@
 'use strict';
 
 class SendObj {
-  constructor (statusCode = 200, cookie = [], contentType = 'text/html; charset=UTF-8', location = '/') {
+  constructor (statusCode = 200, cookie = [], contentType = 'text/html; charset=UTF-8', location = '/', data='') {
     this._statusCode = statusCode;
     this._contentType = contentType;
     this._cookie = cookie;
     this._location = location;
-    this._data = '';
+    this._data = data;
   }
 
   get statusCode () {
