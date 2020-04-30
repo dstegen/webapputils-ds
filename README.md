@@ -76,6 +76,8 @@ authenticate.loggedIn(sessionId); //returns true if user is logged in, otherwise
 authenticate.getUserId(sessionId); //returns the userId, given in the login
 authenticate.addPasswd(passwdObj, myUserId, myPassword); //returns passwdObj with new user and password added
 authenticate.logout(sessionId); //returns nothing
+authenticate.jwtLogin(passwdObj, myUserId, myPassword, payload, key, optionsSign); //returns a jwt-token if successful, otherwise undefined
+authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token is valid, otherwise false
 ```
 
 - **ServerDS** and **ServerDSS** are the new class modules for easy starting a web server (incl. web sockets on the same port), ServerDSS is the TSL/SSL version
@@ -106,6 +108,13 @@ authenticate.logout(sessionId); //returns nothing
 
 
 ## Changelog ##
+
+#### v0.4.7 ####
+- updated jquery and ws
+- added data to SendObj constructor
+- added basic json web token support in Auth with jose
+- added basic rest-api to example
+- made uniSend more solid
 
 #### v0.4.6 ####
 - added new class modules (ServerDS, ServerDSS) for easy starting a web server (incl. web sockets on the same port)
