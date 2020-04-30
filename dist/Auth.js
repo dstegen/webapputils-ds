@@ -12,6 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const uuidv4 = require('uuid').v4;
 const bcrypt = require('bcryptjs');
+const {JWT} = require('jose');
 
 
 class Auth {
@@ -71,6 +72,35 @@ class Auth {
     } catch (e) {
       console.log('ERROR getting userId: '+e);
       return 'ERROR getting userId...';
+    }
+  }
+
+  jwtLogin (passwdObj, myUserId, myPassword, payload={}, key, optionsSign={}) {
+    let token = undefined;
+    if (checkPasswd(passwdObj, myUserId, myPassword)) {
+      try {
+        token = JWT.sign(payload, key, optionsSign);
+        return token;
+      } catch (e) {
+        console.log('ERROR API login failed: '+e);
+        return undefined;
+      }
+    } else {
+      return undefined;
+    }
+  }
+
+  jwtVerify (token, key, optionsVerify={}) {
+    try {
+      if (JWT.verify(token, key, optionsVerify)) {
+        return true;
+      } else {
+        console.log('ERROR API verifying token failed: ');
+        return false;
+      }
+    } catch (e) {
+      console.log('ERROR API verifying token failed: '+e);
+      return false;
     }
   }
 

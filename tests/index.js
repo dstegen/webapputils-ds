@@ -16,3 +16,5 @@ let i = 0;
 myForks[i] = fork('./tests/getIPs_test');
 
 myForks[i++] = fork('./tests/Auth_test');
+
+myForks[i++] = fork('./tests/Auth_jwt_test');

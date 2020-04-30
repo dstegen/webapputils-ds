@@ -31,10 +31,11 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
     "formidable": "^1.2.2",
-    "jquery": "^3.4.1",
+    "jose": "^1.26.1",
+    "jquery": "^3.5.0",
     "mimetype": "0.0.8",
     "uuid": "^7.0.3",
-    "ws": "^7.2.3"
+    "ws": "^7.2.5"
   },
   "nodemonConfig": {
     "ignore": [
