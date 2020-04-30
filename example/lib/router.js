@@ -11,6 +11,7 @@
 const path = require('path');
 const {deliver} = require('../../../webapputils-ds');
 const {webView, login, logout, editAction, updateAction, deleteAction} = require('./controller');
+const api = require('./api');
 
 
 function router (request, response, wss, wsport, devmode) {
@@ -18,6 +19,7 @@ function router (request, response, wss, wsport, devmode) {
   if (devmode) staticPath = path.join(__dirname, '../../');
   let route = request.url.substr(1).split('?')[0];
   if (request.url.includes('media') || request.url.includes('node_modules') || request.url.includes('public') || request.url.includes('favicon')) route = 'static';
+  if (request.url.startsWith('/rest')) route = 'api';
   switch (route) {
     case 'static':
       deliver(request, response, staticPath);
@@ -36,6 +38,9 @@ function router (request, response, wss, wsport, devmode) {
       break;
     case 'delete':
       deleteAction(request, response, wss);
+      break;
+    case 'api':
+      api(request, response);
       break;
     default:
       webView(request, response, wss, wsport)

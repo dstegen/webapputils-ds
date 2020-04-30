@@ -21,7 +21,7 @@ let key = JWK.asKey({
 });
 let payload = {userId: 'test@danielstegen.de'}
 let optionsSign = {
-  audience: ['freduser:backend'],
+  audience: ['user:backend'],
   expiresIn: '1 hour',
   header: {
     typ: 'JWT'
@@ -29,7 +29,7 @@ let optionsSign = {
   issuer: 'localhost'
 };
 let optionsVerify = {
-  audience: ['freduser:backend'],
+  audience: ['user:backend'],
   issuer: 'localhost'
 }
 
