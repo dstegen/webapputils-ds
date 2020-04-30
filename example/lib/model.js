@@ -36,7 +36,7 @@ function getObj () {
 }
 
 function updateItem (obj, fields) {
-  if (fields.id != '') {
+  if (fields.id && fields.id != '') {
     // update
     Object.keys(fields).forEach( key => {
       if (key !== 'id') {
