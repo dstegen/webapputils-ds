@@ -8,6 +8,10 @@
 'use strict';
 
 function uniSend(sendObj, response) {
+  if (sendObj == undefined || typeof sendObj !== 'object') {
+    sendObj = {};
+    sendObj.statusCode = 500;
+  }
   if (sendObj.statusCode == undefined) sendObj.statusCode = 200;
   if (sendObj.location == undefined) sendObj.location = '/';
   if (sendObj.contentType == undefined) sendObj.contentType = 'text/html; charset=UTF-8';
