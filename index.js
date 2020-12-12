@@ -5,7 +5,6 @@
  * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
-const authenticate = require('./dist/authenticate');
 const cookie = require('./dist/cookie');
 const deliver = require('./dist/deliver');
 const getFormObj = require('./dist/getFormObj');
@@ -16,4 +15,4 @@ const Auth = require('./dist/Auth');
 const ServerDS = require('./dist/ServerDS');
 const ServerDSS = require('./dist/ServerDSS');
 
-module.exports = { authenticate, cookie, deliver, getFormObj, getIPs, SendObj, uniSend, Auth, ServerDS, ServerDSS }
+module.exports = { cookie, deliver, getFormObj, getIPs, SendObj, uniSend, Auth, ServerDS, ServerDSS }
