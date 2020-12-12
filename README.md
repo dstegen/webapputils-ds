@@ -7,7 +7,7 @@
 npm install webapputils-ds
 ```
 
-## Use example ##
+## Howto use the example ##
 
 Start example with
 ```
@@ -23,7 +23,7 @@ Password: 123
 ## Usage ##
 
 ```
-const { cookie, SendObj, uniSend, getFormObj, authenticate, Auth, ServerDS, ServerDSS } = require('webapputils-ds');
+const { cookie, SendObj, uniSend, getFormObj, Auth, ServerDS, ServerDSS } = require('webapputils-ds');
 ```
 
 - **cookie(request)** returns the cookie-object, access cookie-properties like this:
@@ -34,8 +34,7 @@ cookie(request).sessionid
 ```
 let sendObj = new SendObj(302);  //redirect to '/'
 let sendObj = new SendObj(302, [sessionid=1001]);  //redirect to '/' with sessionid in cookie
-let sendObj = new SendObj();
-sendObj.data = '<!DOCTYPE HTML><html lang="en"><body><h1>Hello World!</h1></body></html>'
+let sendObj = new SendObj(200, [], '/', '<!DOCTYPE HTML><html lang="en"><body><h1>Hello World!</h1></body></html>');
 ```
 
 - use **uniSend(sendObj, response)** for sending the response
@@ -56,16 +55,7 @@ getFormObj(request).then(
 });
 ```
 
-- **authenticate** ***(deprecated)*** provides methods for authentication:
-  - **passwdObj-format**: { 'userId': 'bcrypt(password)'}
-  - ***authenticate.login(passwdObj, myUserId, myPassword, sessionFilePath)*** returns an uuid-v4 sessionid, if successful, otherwise *undefined*
-  - ***authenticate.logout(sessionId, sessionFilePath)*** returns nothing
-  - ***authenticate.loggedIn(sessionId, sessionFilePath)*** returns *true* if user is logged in, otherwise *false*
-  - ***authenticate.addPasswd(passwdObj, myUserId, myPassword)*** returns passwdObj with new user and password added
-  - ***authenticate.getUserId(sessionId, sessionFilePath)*** returns userId for logged in user with sessionId
-
-
-- **Auth()** is the new class module for authentication, and will replace *authenticate* soon
+- **Auth()** is the class module for authentication, and replaced *authenticate*
 ```
 const authenticate = new Auth(sessionFilePath);
 ```
@@ -74,13 +64,14 @@ const authenticate = new Auth(sessionFilePath);
 authenticate.login(passwdObj, myUserId, myPassword); //returns an uuid-v4 sessionid if successful, otherwise undefined
 authenticate.loggedIn(sessionId); //returns true if user is logged in, otherwise false
 authenticate.getUserId(sessionId); //returns the userId, given in the login
+authenticate.getUserTimeStamp(sessionId); //returns the user login timeStamp/date
 authenticate.addPasswd(passwdObj, myUserId, myPassword); //returns passwdObj with new user and password added
 authenticate.logout(sessionId); //returns nothing
 authenticate.jwtLogin(passwdObj, myUserId, myPassword, payload, key, optionsSign); //returns a jwt-token if successful, otherwise undefined
 authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token is valid, otherwise false
 ```
 
-- **ServerDS** and **ServerDSS** are the new class modules for easy starting a web server (incl. web sockets on the same port), ServerDSS is the TSL/SSL version
+- **ServerDS** and **ServerDSS** are the class modules for easy starting a web server (incl. web sockets on the same port), ServerDSS is the TSL/SSL version
 
   - **simple example:**
   ```
@@ -108,6 +99,12 @@ authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token 
 
 
 ## Changelog ##
+
+#### v0.4.8 ####
+- removed deprecated authenticate.js
+- added timeStamp to sessionsList
+- added getUserTimeStamp method to Auth.js class module
+- updated unit test for Auth.js
 
 #### v0.4.7 ####
 - updated jquery and ws
