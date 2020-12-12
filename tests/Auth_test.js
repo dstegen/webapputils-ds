@@ -14,8 +14,10 @@ const Auth = require('../dist/Auth');
 
 const authenticate = new Auth(path.join(__dirname, 'sessiontest.json'));
 
+let myTimeStamp = (new Date()).toString();
 let passwdObj = authenticate.addPasswd({}, 'test@danielstegen.de', '123');
-let sessionId = authenticate.login(passwdObj, 'test@danielstegen.de', '123');
+let sessionId = authenticate.login(passwdObj, 'test@danielstegen.de', '123', myTimeStamp);
+
 
 // Test login
 assert.strictEqual(true, isUUID(sessionId));
@@ -27,6 +29,9 @@ assert.strictEqual(false, authenticate.loggedIn('a57671fc-1535-4927-a9c4-9b097d8
 
 // Test getUserId
 assert.strictEqual('test@danielstegen.de', authenticate.getUserId(sessionId));
+
+// Test getUserTimeStamp
+assert.strictEqual(myTimeStamp, authenticate.getUserTimeStamp(sessionId));
 
 // Test logout
 assert.strictEqual(undefined, authenticate.logout(sessionId));

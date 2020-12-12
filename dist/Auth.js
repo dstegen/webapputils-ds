@@ -22,11 +22,12 @@ class Auth {
     this._sessionsList = [];
   }
 
-  login (passwdObj, myUserId, myPassword) {
+  login (passwdObj, myUserId, myPassword, myTimeStamp=new Date()) {
     let sessionId = uuidv4();
     if (checkPasswd(passwdObj, myUserId, myPassword)) {
       let tmpObj = {};
       tmpObj[sessionId] = myUserId;
+      tmpObj.timeStamp = myTimeStamp;
       this._sessionsList = loadSessionsList(this._sessionFilePath);
       this._sessionsList.push(tmpObj);
       saveSessionsList(this._sessionsList, this._sessionFilePath);
@@ -75,6 +76,15 @@ class Auth {
     }
   }
 
+  getUserTimeStamp (sessionId) {
+    try {
+      return loadSessionsList(this._sessionFilePath).filter( item => item[sessionId])[0].timeStamp;
+    } catch (e) {
+      console.log('ERROR getting userTimeStamp: '+e);
+      return 'ERROR getting userTimeStamp...';
+    }
+  }
+
   jwtLogin (passwdObj, myUserId, myPassword, payload={}, key, optionsSign={}) {
     let token = undefined;
     if (checkPasswd(passwdObj, myUserId, myPassword)) {
@@ -110,7 +120,7 @@ class Auth {
 // Additional functions
 
 function loadSessionsList (sessionFilePath) {
-  let sessionObj = { ids: [] };
+  let sessionObj = [];
   try {
     if (fs.existsSync(sessionFilePath)) {
       sessionObj =  JSON.parse(fs.readFileSync(sessionFilePath, 'utf8'));
@@ -118,7 +128,7 @@ function loadSessionsList (sessionFilePath) {
   } catch (e) {
     console.log('ERROR reading SessionObj: '+e);
   }
-  return sessionObj.ids;
+  return sessionObj;
 }
 
 function saveSessionsList (sessionsList, sessionFilePath) {
@@ -130,7 +140,7 @@ function saveSessionsList (sessionsList, sessionFilePath) {
     }
   } else {
     try {
-      fs.writeFileSync(sessionFilePath, JSON.stringify({ ids: sessionsList }));
+      fs.writeFileSync(sessionFilePath, JSON.stringify(sessionsList));
     } catch (e) {
       console.log('ERROR updating SessionObj: '+e);
     }
