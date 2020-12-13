@@ -16,8 +16,12 @@ function viewEdit (itemObj) {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <!-- Bootstrap, jquery and CSS -->
-      <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="/node_modules/webapputils-ds/example/public/styles.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+      <style>
+        a, a:hover {
+          text-decoration: none;
+        }
+      </style>
       <title>webapputils-ds</title>
     </head>
     <body>
@@ -26,17 +30,15 @@ function viewEdit (itemObj) {
         <form action="/update" method="post">
           <input type="text" name="id" class="d-none" hidden value="${itemObj.id}" />
           ${formInputs(itemObj)}
-          <input type="submit" class="btn-sm btn-primary" value="add/update" />
+          <input type="submit" class="btn btn-sm btn-primary" value="add/update" />
         </form>
         <hr />
         <div class="d-flex justify-content-end">
-          <a href="/" class="btn-sm btn-secondary">cancle</a>
+          <a href="/" class="btn btn-sm btn-secondary">cancle</a>
         </div>
       </main>
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-      <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="/node_modules/webapputils-ds/example/public/scripts.js"></script>
+      <!-- jQuery first, then Bootstrap bundled JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     </body>
   </html>
   `;
