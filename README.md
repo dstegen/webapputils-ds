@@ -1,10 +1,10 @@
 # webapputils-ds #
-#### npm package with simple utils for making nodejs web apps programming more easy ####
+simple utils for making nodejs web apps programming more easy, including simple API und web sockets support
 
 ## Installation ##
 
 ```
-npm install webapputils-ds
+npm i webapputils-ds
 ```
 
 ## Howto use the example ##
@@ -30,7 +30,7 @@ const { cookie, SendObj, uniSend, getFormObj, Auth, ServerDS, ServerDSS } = requ
 ```
 cookie(request).sessionid
 ```
-- **SendObj()** returns a new sendObj, you can use properties for statusCode and cookies and add the data later
+- **SendObj()** returns a new sendObj, you can use properties for statusCode, cookies, redirect path and data
 ```
 let sendObj = new SendObj(302);  //redirect to '/'
 let sendObj = new SendObj(302, [sessionid=1001]);  //redirect to '/' with sessionid in cookie
@@ -43,7 +43,7 @@ uniSend(new SendObj(302, [sessionid=1001]), response);
 uniSend(sendObj, response);
 ```
 
-- **getFormObj(request)** returns a promise and the form fields and files in data object, use like this:
+- **getFormObj(request)** returns a promise and the form fields and files in the data object, use like this:
 ```
 getFormObj(request).then(
   data => {
@@ -55,11 +55,11 @@ getFormObj(request).then(
 });
 ```
 
-- **Auth()** is the class module for authentication, and replaced *authenticate*
+- **Auth()** is the class module for authentication, and replaces *authenticate*
 ```
 const authenticate = new Auth(sessionFilePath);
 ```
-  - **passwdObj-format**: { 'userId': 'bcrypt(password)'}
+  - **passwdObj format**: { 'userId': 'bcrypt(password)'}
 ```
 authenticate.login(passwdObj, myUserId, myPassword); //returns an uuid-v4 sessionid if successful, otherwise undefined
 authenticate.loggedIn(sessionId); //returns true if user is logged in, otherwise false
@@ -99,6 +99,11 @@ authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token 
 
 
 ## Changelog ##
+
+#### v0.4.9 ####
+- simplified example
+- removed bootstrap and jquery dependencies
+- updated jose, uuid and ws dependencies
 
 #### v0.4.8 ####
 - removed deprecated authenticate.js

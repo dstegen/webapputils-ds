@@ -1,6 +1,6 @@
 {
   "name": "webapputils-ds",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "npm package with simple utils for making nodejs web apps programming more easy",
   "main": "index.js",
   "directories": {
