@@ -30,10 +30,10 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "formidable": "^1.2.2",
-    "jose": "^1.26.1",
+    "jose": "^2.0.3",
     "mimetype": "0.0.8",
-    "uuid": "^7.0.3",
-    "ws": "^7.2.5"
+    "uuid": "^8.3.2",
+    "ws": "^7.4.1"
   },
   "nodemonConfig": {
     "ignore": [
