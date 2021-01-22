@@ -8,7 +8,7 @@
 'use strict';
 
 // Required modules
-const { ServerDS, ServerDSS } = require('../../webapputils-ds');
+const { ServerDS } = require('../../webapputils-ds');
 const router = require('./lib/router');
 
 // Name the process
