@@ -1,11 +1,12 @@
 /*!
  * dist/SendObj.js
  * webapputils-ds (https://github.com/dstegen/webapputils-ds)
- * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Copyright 2021 Daniel Stegen <info@danielstegen.de>
  * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
 'use strict';
+
 
 class SendObj {
   constructor (statusCode = 200, cookie = [], contentType = 'text/html; charset=UTF-8', location = '/', data='') {
@@ -56,5 +57,6 @@ class SendObj {
     this._data = data;
   }
 }
+
 
 module.exports = SendObj;

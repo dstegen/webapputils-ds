@@ -1,7 +1,7 @@
 /*!
  * dist/ServerDSS.js
  * webapputils-ds (https://github.com/dstegen/webapputils-ds)
- * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Copyright 2021 Daniel Stegen <info@danielstegen.de>
  * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
@@ -12,7 +12,8 @@ const HttpsServer = require('https').Server;
 const WebSocket = require('ws');
 const getIPs = require('./getIPs');
 
-class ServerDS extends HttpsServer {
+
+class ServerDSS extends HttpsServer {
   constructor (serverName='Server', port=8080, host='0', serverOptions={}) {
     super(serverOptions);
     this._serverName = serverName;
@@ -54,4 +55,4 @@ function getMyIp (host) {
 }
 
 
-module.exports = ServerDS;
+module.exports = ServerDSS;

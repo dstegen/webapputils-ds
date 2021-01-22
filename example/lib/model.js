@@ -1,7 +1,7 @@
 /*!
  * lib/model.js
  * webapp-ds (https://github.com/dstegen/webapp-ds)
- * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Copyright 2021 Daniel Stegen <info@danielstegen.de>
  * Licensed under MIT (https://github.com/dstegen/webapp-ds/blob/master/LICENSE)
  */
 

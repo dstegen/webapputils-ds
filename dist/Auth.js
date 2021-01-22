@@ -1,7 +1,7 @@
 /*!
  * dist/Auth.js
  * webapputils-ds (https://github.com/dstegen/webapputils-ds)
- * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Copyright 2021 Daniel Stegen <info@danielstegen.de>
  * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
@@ -158,5 +158,6 @@ function checkPasswd (passwdObj, myUserId, myPassword) {
       return false;
   }
 }
+
 
 module.exports = Auth;

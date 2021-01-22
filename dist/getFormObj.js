@@ -1,13 +1,14 @@
 /*!
  * dist/getFormObj.js
  * webapputils-ds (https://github.com/dstegen/webapputils-ds)
- * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Copyright 2021 Daniel Stegen <info@danielstegen.de>
  * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
 'use strict';
 
 const formidable = require('formidable');
+
 
 function getFormObj (req) {
   let formObj = {};
@@ -24,5 +25,6 @@ function getFormObj (req) {
     });
 	});
 }
+
 
 module.exports = getFormObj;

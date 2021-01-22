@@ -1,11 +1,12 @@
 /*!
  * dist/uniSend.js
  * webapputils-ds (https://github.com/dstegen/webapputils-ds)
- * Copyright 2020 Daniel Stegen <info@danielstegen.de>
+ * Copyright 2021 Daniel Stegen <info@danielstegen.de>
  * Licensed under MIT (https://github.com/dstegen/webapputils-ds/blob/master/LICENSE)
  */
 
 'use strict';
+
 
 function uniSend(sendObj, response) {
   if (sendObj == undefined || typeof sendObj !== 'object') {
@@ -27,5 +28,6 @@ function uniSend(sendObj, response) {
     console.log('ERROR sending response: ' + e);
   }
 }
+
 
 module.exports = uniSend;
