@@ -57,7 +57,7 @@ class Auth {
   addPasswd (passwdObj, myUserId, myPassword) {
     try {
       if (myUserId !== '' && myPassword !== '' && myPassword !== undefined) {
-        passwdObj[myUserId] = bcrypt.hashSync(myPassword);
+        passwdObj[myUserId] = bcrypt.hashSync(myPassword, 10);
       } else {
         return undefined;
       }
