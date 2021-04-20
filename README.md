@@ -101,6 +101,8 @@ authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token 
 ## Changelog ##
 
 #### v0.4.9 ####
+- improved security on password generation
+- code cleanup
 - simplified example
 - removed bootstrap and jquery dependencies
 - updated jose, uuid and ws dependencies
@@ -145,7 +147,7 @@ authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token 
 
 The MIT License (MIT)
 
-Copyright (c) 2020 Daniel Stegen
+Copyright (c) 2021 Daniel Stegen
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
