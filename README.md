@@ -100,9 +100,12 @@ authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token 
 
 ## Changelog ##
 
-#### v0.4.9 ####
+#### v0.5.0 ####
 - improved security on password generation
 - code cleanup
+- updated jose
+
+#### v0.4.9 ####
 - simplified example
 - removed bootstrap and jquery dependencies
 - updated jose, uuid and ws dependencies
