@@ -100,6 +100,9 @@ authenticate.jwtVerify(token, key, optionsVerify); //returns true, if the token 
 
 ## Changelog ##
 
+#### v0.5.1
+- updated ws dependencies
+
 #### v0.5.0 ####
 - improved security on password generation
 - code cleanup
