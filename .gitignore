@@ -17,3 +17,4 @@ example/backup/*
 *_bak.json
 sessionids.json
 make_package.txt
+npm-OTP-info.txt
