@@ -1,0 +1,14 @@
+node_modules/*
+example/backup/*
+example/media/*
+example/sessioids.json
+.git/*
+.DS_Store
+.eslintignore
+.eslintrc.json
+.gitignore
+.npmignore
+*_bak.json
+make_package.txt
+sessioids.json
+npm-OTP-info.txt

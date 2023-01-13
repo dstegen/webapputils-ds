@@ -1,0 +1,43 @@
+{
+  "name": "webapputils-ds",
+  "version": "0.5.1",
+  "description": "npm package with simple utils for making nodejs web apps programming more easy",
+  "main": "index.js",
+  "directories": {
+    "dist": "dist",
+    "example": "example",
+    "tests": "tests"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node tests/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstegen/webapputils-ds.git"
+  },
+  "keywords": [
+    "webapp",
+    "utils",
+    "nodejs"
+  ],
+  "author": "Daniel Stegen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dstegen/webapputils-ds/issues"
+  },
+  "homepage": "https://github.com/dstegen/webapputils-ds#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "formidable": "^1.2.2",
+    "jose": "^2.0.6",
+    "mimetype": "0.0.8",
+    "uuid": "^8.3.2",
+    "ws": "^7.4.6"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
+  }
+}

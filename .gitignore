@@ -1,0 +1,20 @@
+# macOS files
+.DS_Store
+
+# archives
+*.zip
+*.tgz
+
+# external modules
+node_modules
+
+# other files & directories files
+media/*
+example/backup/*
+/*.csv
+/*.ods
+/*.bak
+*_bak.json
+sessionids.json
+make_package.txt
+npm-OTP-info.txt
